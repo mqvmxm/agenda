@@ -1,4 +1,12 @@
 import web
+import sys
+import os
+
+# Le enseñamos a Python a mirar las carpetas que están más arriba
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
+
+# Ahora sí encuentra el controlador sin importar desde dónde lances la terminal
+from controllers.lista_contactos import ListaContactos
 
 urls = (
     '/', 'Index',
@@ -15,10 +23,6 @@ render = web.template.render('views')
 class Index:
     def GET(self):
         return render.index()
-
-class ListaContactos:
-    def GET(self):
-        return render.lista_contactos()
 
 class VerContacto:
     def GET(self):
